@@ -30,9 +30,12 @@ export default function JobDetail() {
     })
     const [refreshing, setRefreshing] = useState(false)
     const [activeTab, setActiveTab] = useState(tabs[0])
-    const onRefresh = () => {
-        console.log("onRefreshing")
-    }
+    const onRefresh = useCallback(() => {
+        if (refreshing) return
+        setRefreshing(true)
+        refetch()
+        setRefreshing(false)
+    }, [])
     const getTabContent = () => {
         switch (activeTab) {
             case "Qualifications":

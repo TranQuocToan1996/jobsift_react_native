@@ -29,7 +29,7 @@ const Welcome = ({ searchTerm, setSearchTerm, handlePress }) => {
         <View style={styles.searchWrapper}>
           <TextInput
             style={styles.searchInput}
-            onChange={(e) => setSearchTerm(e.nativeEvent.text)}
+            onChangeText={(text) => setSearchTerm(text)}
             value={searchTerm}
             placeholder='What are you looking for?'
           />

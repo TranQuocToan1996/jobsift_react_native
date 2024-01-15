@@ -23,15 +23,17 @@ const Popularjobs = () => {
   const [selectedJob, setSelectedJob] = useState();
 
   const handleCardPress = (item) => {
+    router.push(`/job-details/${item.job_id}`)
+    setSelectedJob(item.job_id)
   };
-
-
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Popular jobs</Text>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={console.log("TODO")}
+        >
           <Text style={styles.headerBtn}>Show all</Text>
         </TouchableOpacity>
       </View>
