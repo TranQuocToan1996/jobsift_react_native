@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import job_data from "../constants/job_data"
 
 const apiKey = process.env.EXPO_PUBLIC_RAPID_API_KEY
 
@@ -24,11 +25,16 @@ const useFetch = (endpoint, query) => {
 
         try {
             const response = await axios.request(options);
+            if (response.status === 429) {
+                setData(job_data.data)
+            } else {
+                setData(response.data.data);
+            }
 
-            setData(response.data.data);
         } catch (error) {
-            setError(error + process.env.EXPO_PUBLIC_RAPID_API_KEY);
+            // setError(error);
             console.log(error)
+            setData(job_data.data)
         } finally {
             setIsLoading(false);
         }
